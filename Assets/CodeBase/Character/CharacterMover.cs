@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
+    [SerializeField] private CharacterView _view;
 
     private PlayerInput _input;
     private CharacterController _characterController;
@@ -40,5 +42,6 @@ public class CharacterMover : MonoBehaviour
         }
 
         _characterController.Move(_speed * movementVector * Time.deltaTime);
+        _view.SetWalkState(movementVector != Vector3.zero);
     }
 }
