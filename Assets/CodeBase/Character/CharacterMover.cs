@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,4 +45,14 @@ public class CharacterMover : MonoBehaviour
         _characterController.Move(_speed * movementVector * Time.deltaTime);
         _view.SetWalkState(movementVector != Vector3.zero);
     }
+}
+
+public class ToolSwitcher : MonoBehaviour
+{
+    [SerializeField] private Tool _currentTool;
+}
+
+public class Tool : MonoBehaviour
+{
+
 }
