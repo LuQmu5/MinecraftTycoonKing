@@ -2,20 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
     [SerializeField] private CharacterView _view;
+    [SerializeField] private CharacterController _characterController;
 
     private PlayerInput _input;
-    private CharacterController _characterController;
 
-    private void Awake()
+    [Inject]
+    public void Construct(PlayerInput input)
     {
-        _input = new PlayerInput();
-        _characterController = GetComponent<CharacterController>();
+        _input = input;
     }
 
     private void OnEnable()
@@ -25,7 +26,7 @@ public class CharacterMover : MonoBehaviour
 
     private void OnDisable()
     {
-        _input?.Disable();
+        _input.Disable();
     }
 
     private void Update()
@@ -45,14 +46,4 @@ public class CharacterMover : MonoBehaviour
         _characterController.Move(_speed * movementVector * Time.deltaTime);
         _view.SetWalkState(movementVector != Vector3.zero);
     }
-}
-
-public class ToolSwitcher : MonoBehaviour
-{
-    [SerializeField] private Tool _currentTool;
-}
-
-public class Tool : MonoBehaviour
-{
-
 }
