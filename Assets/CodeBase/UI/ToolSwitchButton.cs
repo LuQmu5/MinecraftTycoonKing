@@ -1,17 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
 
 public class ToolSwitchButton : ButtonClickHandler
 {
-    [SerializeField] private Image _icon;
-
-    [Header("Icons")]
-    [SerializeField] private Sprite _swordIcon;
-    [SerializeField] private Sprite _pickaxeIcon;
+    public static event Action Clicked;
 
     protected override void OnButtonClicked()
     {
-        
+        Clicked?.Invoke();
     }
 }
-

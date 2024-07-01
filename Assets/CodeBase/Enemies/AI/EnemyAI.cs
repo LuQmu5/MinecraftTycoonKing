@@ -8,19 +8,33 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Transform _target;
     [SerializeField] private Health _health;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private LayerMask _playerMask;
 
     private void Update()
     {
+        if (Vector3.Distance(transform.position, _target.position) > _agent.stoppingDistance + _agent.radius)
+        {
+            _animator.SetBool("IsWalking", true);
+            _animator.SetBool("IsAttacking", false);
+        }
+        else
+        {
+            _animator.SetBool("IsAttacking", true);
+            _animator.SetBool("IsWalking", false);
+        }
+
         _agent.SetDestination(_target.position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Tool tool))
+        if (other.TryGetComponent(out Sword tool))
         {
             _health.ApplyDamage(1);
 
-            StartCoroutine(KnocningBack(tool.transform.position));
+            if (gameObject.activeSelf)
+                StartCoroutine(KnocningBack(tool.transform.position));
         }
     }
 
