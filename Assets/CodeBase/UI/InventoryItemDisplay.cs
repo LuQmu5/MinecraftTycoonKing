@@ -10,6 +10,6 @@ public class InventoryItemDisplay : MonoBehaviour
 
     public void SetCount(int amount)
     {
-        _count.text = amount.ToString();
+        _count.text = "X" + amount;
     }
 }
