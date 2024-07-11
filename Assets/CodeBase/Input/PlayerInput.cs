@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0d37d71-9428-434c-8697-70330bada630"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -118,6 +127,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchTool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebfe14a0-ab1c-4997-871f-a1c3a2899e16"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -132,6 +152,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Actions
         m_Actions = asset.FindActionMap("Actions", throwIfNotFound: true);
         m_Actions_SwitchTool = m_Actions.FindAction("SwitchTool", throwIfNotFound: true);
+        m_Actions_OpenInventory = m_Actions.FindAction("OpenInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,11 +261,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Actions;
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
     private readonly InputAction m_Actions_SwitchTool;
+    private readonly InputAction m_Actions_OpenInventory;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
         public ActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @SwitchTool => m_Wrapper.m_Actions_SwitchTool;
+        public InputAction @OpenInventory => m_Wrapper.m_Actions_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -257,6 +280,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchTool.started += instance.OnSwitchTool;
             @SwitchTool.performed += instance.OnSwitchTool;
             @SwitchTool.canceled += instance.OnSwitchTool;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -264,6 +290,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchTool.started -= instance.OnSwitchTool;
             @SwitchTool.performed -= instance.OnSwitchTool;
             @SwitchTool.canceled -= instance.OnSwitchTool;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -288,5 +317,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IActionsActions
     {
         void OnSwitchTool(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
-public class CharacterControl : MonoBehaviour
+public class CharacterControl : MonoBehaviour, ICollectableItemPicker
 {
     [SerializeField] private float _speed = 5;
     [SerializeField] private CharacterController _characterController;
@@ -15,13 +15,15 @@ public class CharacterControl : MonoBehaviour
 
     private int _currentToolIndex = 0;
     private PlayerInput _input;
+    private CharacterInventory _inventory;
 
     public event Action<ToolData> ToolSwitched;
 
     [Inject]
-    public void Construct(PlayerInput input)
+    public void Construct(PlayerInput input, CharacterInventory inventory)
     {
         _input = input;
+        _inventory = inventory;
 
         SwitchTool();
     }
@@ -29,13 +31,15 @@ public class CharacterControl : MonoBehaviour
     private void OnEnable()
     {
         _input.Enable();
-        _input.Actions.SwitchTool.performed += SwitchToolKeyPressed;
+        _input.Actions.SwitchTool.started += SwitchToolKeyPressed;
+
         ToolSwitchButton.Clicked += SwitchTool;
     }
 
     private void OnDisable()
     {
-        _input.Actions.SwitchTool.performed -= SwitchToolKeyPressed;
+        _input.Actions.SwitchTool.started -= SwitchToolKeyPressed;
+
         ToolSwitchButton.Clicked -= SwitchTool;
         _input.Disable();
     }
@@ -52,6 +56,13 @@ public class CharacterControl : MonoBehaviour
             _health.ApplyDamage(1);
             StartCoroutine(KnocningBack(sword.transform.position));
         }
+    }
+
+    public void PickUp(OresChunk oreChunk)
+    {
+        Debug.Log("picked up: " + oreChunk.gameObject.name);
+        oreChunk.gameObject.SetActive(false);
+        _inventory.Add(oreChunk.Type);
     }
 
     private void Move()
