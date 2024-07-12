@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 246007068}
   - component: {fileID: 246007067}
   - component: {fileID: 246007066}
+  - component: {fileID: 246007069}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -710,6 +711,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246007064}
   m_CullTransparentMesh: 1
+--- !u!114 &246007069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246007064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49241e8b6e2aca149bc6eca47fc16ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closableObject: {fileID: 1535548083}
 --- !u!1 &340648236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2415,7 @@ GameObject:
   - component: {fileID: 1318387177}
   - component: {fileID: 1318387176}
   - component: {fileID: 1318387175}
+  - component: {fileID: 1318387178}
   m_Layer: 5
   m_Name: InventoryButton
   m_TagString: Untagged
@@ -2510,6 +2525,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318387172}
   m_CullTransparentMesh: 1
+--- !u!114 &1318387178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318387172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837abef0a4113d84eaa4947aa1d2bb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368477335
 GameObject:
   m_ObjectHideFlags: 0
