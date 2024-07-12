@@ -15,20 +15,27 @@ public class CharacterInventoryDisplay : MonoBehaviour
         _inventory = inventory;
         _playerInput = playerInput;
 
-        _playerInput.Actions.OpenInventory.started += ToggleInventory;
+        _playerInput.Actions.OpenInventory.started += ToggleInventoryWrapper;
+        OpenInventoryButton.Clicked += ToggleInventory;
     }
 
     private void OnDestroy()
     {
-        _playerInput.Actions.OpenInventory.started -= ToggleInventory;
+        _playerInput.Actions.OpenInventory.started -= ToggleInventoryWrapper;
+        OpenInventoryButton.Clicked -= ToggleInventory;
     }
 
-    private void ToggleInventory(InputAction.CallbackContext context)
+    private void ToggleInventory()
     {
         if (gameObject.activeSelf)
             Hide();
         else
             Show();
+    }
+
+    private void ToggleInventoryWrapper(InputAction.CallbackContext context)
+    {
+        ToggleInventory();
     }
 
     public void Show()
