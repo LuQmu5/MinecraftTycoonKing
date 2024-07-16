@@ -13,7 +13,7 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
     [SerializeField] private Health _health;
     [SerializeField] private Tool[] _tools;
 
-    private int _currentToolIndex = 0;
+    private int _currentToolIndex = 1;
     private PlayerInput _input;
     private CharacterInventory _inventory;
 
@@ -68,7 +68,9 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
     private void Move()
     {
         Vector3 movementVector = Vector3.zero;
-        Vector3 inputVector = _input.Movement.Move.ReadValue<Vector2>();
+
+        // Vector3 inputVector = _input.Movement.Move.ReadValue<Vector2>();
+        Vector3 inputVector = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
 
         if (inputVector.sqrMagnitude > 0.1f)
         {
