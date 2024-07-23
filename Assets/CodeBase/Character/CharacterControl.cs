@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,6 +61,9 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
 
     public void PickUp(OresChunk oreChunk)
     {
+        // точка на спине
+        // tween (cat walk, path)
+
         Debug.Log("picked up: " + oreChunk.gameObject.name);
         oreChunk.gameObject.SetActive(false);
         _inventory.Add(oreChunk.Type);
@@ -86,6 +90,8 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
         _view.SetWalkState(movementVector != Vector3.zero);
     }
 
+    // animation curve
+    // tween
     private IEnumerator KnocningBack(Vector3 from)
     {
         int directionX = transform.position.x < from.x ? -1 : 1;

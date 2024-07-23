@@ -9,6 +9,7 @@ public class CharacterView : MonoBehaviour
 
     private void Awake()
     {
+        // лучше всегда через serializefield-ы
         _animator = GetComponent<Animator>();
     }
 
