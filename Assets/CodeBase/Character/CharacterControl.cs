@@ -73,8 +73,8 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
     {
         Vector3 movementVector = Vector3.zero;
 
-        // Vector3 inputVector = _input.Movement.Move.ReadValue<Vector2>();
-        Vector3 inputVector = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
+        Vector3 inputVector = _input.Movement.Move.ReadValue<Vector2>();
+        // Vector3 inputVector = new Vector2(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"));
 
         if (inputVector.sqrMagnitude > 0.1f)
         {
