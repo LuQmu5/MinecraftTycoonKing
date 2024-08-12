@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 7499733415500297637}
   - component: {fileID: 7465643226865151309}
   - component: {fileID: 502161492261485776}
-  - component: {fileID: 8951563583861961946}
+  - component: {fileID: 8050316212671336117}
   m_Layer: 0
   m_Name: CombinedMesh
   m_TagString: Untagged
@@ -1058,7 +1058,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891265243493460882}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: c9b24430e1707b648ac1e273b5483cb8, type: 2}
 --- !u!23 &7465643226865151309
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1120,13 +1120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c0de7baff966b40a81d10a5af708bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savingPath: /LKHGames/MeshTogether/CombinedMeshes/
+  savingPath: Resources/Materials/CombinedMesh
   includeInactiveChildren: 1
   deactivateCombinedChildren: 1
   deactivateCombinedChildrenMeshRenderers: 0
   destroyCombinedChildren: 0
   _meshFiltersToSkip: []
---- !u!64 &8951563583861961946
+--- !u!64 &8050316212671336117
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1147,7 +1147,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: c9b24430e1707b648ac1e273b5483cb8, type: 2}
 --- !u!1 &2008198055451545995
 GameObject:
   m_ObjectHideFlags: 0

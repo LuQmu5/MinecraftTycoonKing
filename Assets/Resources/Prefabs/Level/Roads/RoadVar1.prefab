@@ -1187,7 +1187,7 @@ Transform:
   m_GameObject: {fileID: 425162244936934092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.704, y: -0.969, z: 2.155}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21213,7 +21213,7 @@ GameObject:
   - component: {fileID: 3814495909178366578}
   - component: {fileID: 1999517637166643736}
   - component: {fileID: 4587446324903460333}
-  - component: {fileID: 3029355025675350656}
+  - component: {fileID: 9108491134733734001}
   m_Layer: 0
   m_Name: RoadCombinedMesh
   m_TagString: Untagged
@@ -21230,7 +21230,7 @@ Transform:
   m_GameObject: {fileID: 6665439693251933832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.704, y: 0.969, z: -2.155}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21465,7 +21465,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6665439693251933832}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 4960638a0a517e245b64aa03abf6fd60, type: 2}
 --- !u!23 &1999517637166643736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21520,13 +21520,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c0de7baff966b40a81d10a5af708bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savingPath: /LKHGames/MeshTogether/CombinedMeshes/
-  includeInactiveChildren: 0
+  savingPath: Resources/Materials/RoadCombinedMesh
+  includeInactiveChildren: 1
   deactivateCombinedChildren: 1
   deactivateCombinedChildrenMeshRenderers: 0
   destroyCombinedChildren: 0
   _meshFiltersToSkip: []
---- !u!64 &3029355025675350656
+--- !u!64 &9108491134733734001
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21547,7 +21547,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 4960638a0a517e245b64aa03abf6fd60, type: 2}
 --- !u!1 &6714878055557892008
 GameObject:
   m_ObjectHideFlags: 0
