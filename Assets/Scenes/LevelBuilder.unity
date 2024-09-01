@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7708093755652838850, guid: 5811f7f7b9fb3044fa3a2f0e116e6a94, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomPrefab: {fileID: 633066585945964474, guid: b746754f3a1f33a4ebed6d237296e10b, type: 3}
   _roadPrefab: {fileID: 477780309679466607, guid: 0ca46d064450cb34294a3e9e4984cf3e, type: 3}
-  _roomsCount: 2
+  _roomsCount: 1000
 --- !u!1 &91361574155094255
 GameObject:
   m_ObjectHideFlags: 3
