@@ -13,6 +13,8 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
     [SerializeField] private CharacterView _view;
     [SerializeField] private Health _health;
     [SerializeField] private Tool[] _tools;
+    [SerializeField] private Transform _backpack;
+    [SerializeField] private Transform _backpackPickUpPosition;
 
     private int _currentToolIndex = 1;
     private PlayerInput _input;
@@ -61,12 +63,42 @@ public class CharacterControl : MonoBehaviour, ICollectableItemPicker
 
     public void PickUp(OresChunk oreChunk)
     {
-        // точка на спине
-        // tween (cat walk, path)
+        StartCoroutine(PickingUp(oreChunk));
+    }
 
-        Debug.Log("picked up: " + oreChunk.gameObject.name);
+    private IEnumerator PickingUp(OresChunk oreChunk)
+    {
+        float flySpeed = 10;
+
+        while (oreChunk.transform.position.y < _backpackPickUpPosition.position.y)
+        {
+            oreChunk.transform.Translate(Vector3.up * Time.deltaTime * flySpeed);
+
+            oreChunk.transform.position = Vector3.MoveTowards(oreChunk.transform.position, 
+                new Vector3(_backpackPickUpPosition.position.x, oreChunk.transform.position.y, _backpackPickUpPosition.transform.position.z),
+                flySpeed * Time.deltaTime);
+
+            Debug.Log("Up");
+
+            yield return null;
+        }
+
+        while (oreChunk.transform.position.y > _backpack.position.y)
+        {
+            oreChunk.transform.Translate(Vector3.down * Time.deltaTime * flySpeed);
+
+            oreChunk.transform.position = Vector3.MoveTowards(oreChunk.transform.position,
+                new Vector3(_backpack.position.x, oreChunk.transform.position.y, _backpack.transform.position.z),
+                flySpeed * Time.deltaTime);
+
+            Debug.Log("Down");
+
+            yield return null;
+        }
+
         oreChunk.gameObject.SetActive(false);
         _inventory.Add(oreChunk.Type);
+        Debug.Log(oreChunk.Type + " picked up");
     }
 
     private void Move()
