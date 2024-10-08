@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -59,6 +60,13 @@ public class LevelGenerator : MonoBehaviour
         }
 
         _lastCreatedRoom.transform.parent = null;
+    }
+
+    private void GenerateLevel()
+    {
+        List<Room> _rooms = new List<Room>();
+
+        Room firstRoom = Instantiate(_roomPrefab, transform.position, Quaternion.identity);
     }
 }
 
